@@ -1,8 +1,12 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-require('dotenv').config()
-const userRouter = require('./routes/users')
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
+
+
+const userRouter = require('./routes/users');
+const accountsRouter = require('./routes/accounts');
+
 
 const SERVERDEVPORT = 4741
 const CLIENTDEVPORT = 5173
@@ -34,10 +38,14 @@ const PORT = process.env.PORT || SERVERDEVPORT
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-
-
-app.use('/users', userRouter)
 const ensureLoggedIn = require('./config/ensureLoggedIn');
+
+app.use('/users', userRouter);
+
+app.use('/accounts', ensureLoggedIn, accountsRouter);
+
+
+
 
 app.listen(PORT, () => {
     console.log('listening on port ' + PORT)
