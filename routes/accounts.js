@@ -7,4 +7,6 @@ router.get('/', accountsCtrl.getAccount);
 
 router.post('/', accountsCtrl.createAccount);
 
+router.put('/motto', accountsCtrl.editMotto);
+
 module.exports = router;

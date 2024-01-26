@@ -2,7 +2,8 @@ const Account = require('../models/account');
 
 module.exports = {
     createAccount,
-    getAccount
+    getAccount,
+    editMotto
 };
 
 
@@ -20,10 +21,23 @@ async function createAccount(req, res) {
 async function getAccount(req, res) {
     try {
         const userID = req.user._id;
-        const stats = await Account.findOne({ user: userID });
-        res.json(stats);
+        const account = await Account.findOne({ user: userID });
+        res.json(account);
     } catch (error) {
         console.error('error creating sheet', error)
     }
 };
+
+async function editMotto(req, res) {
+    try {
+        const userID = req.user._id;
+        const account = await Account.findOne({ user: userID });
+        const motto = req.body.motto;
+        account.description = motto;
+        await account.save();
+        res.json('SUCCESS');
+    } catch (error) {
+        console.error('Error changing motto', error)
+    }
+}
 
