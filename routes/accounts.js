@@ -9,4 +9,6 @@ router.post('/', accountsCtrl.createAccount);
 
 router.put('/motto', accountsCtrl.editMotto);
 
+router.put('/pic', accountsCtrl.updatePicture);
+
 module.exports = router;

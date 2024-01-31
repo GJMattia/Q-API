@@ -3,7 +3,8 @@ const Account = require('../models/account');
 module.exports = {
     createAccount,
     getAccount,
-    editMotto
+    editMotto,
+    updatePicture
 };
 
 
@@ -33,11 +34,26 @@ async function editMotto(req, res) {
         const userID = req.user._id;
         const account = await Account.findOne({ user: userID });
         const motto = req.body.motto;
-        account.description = motto;
+        account.motto = motto;
         await account.save();
         res.json('SUCCESS');
     } catch (error) {
         console.error('Error changing motto', error)
     }
-}
+};
+
+async function updatePicture(req, res) {
+    try {
+        const userID = req.user._id;
+        const account = await Account.findOne({ user: userID });
+        const pic = req.body.pic;
+        account.pic = pic;
+        await account.save();
+        res.json('SUCCESS');
+    } catch (error) {
+        console.error('Error changing pic', error)
+    }
+};
+
+
 

@@ -6,7 +6,9 @@ const accountSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     xp: { type: Number, default: 0 },
     level: { type: Number, default: 0 },
-    description: { type: String, default: 'motto here' },
+    motto: { type: String, default: 'motto here' },
+    pic: { type: String, default: 'https://storage.cloud.google.com/saucebucket1916/default.jpeg' },
+
     film: {
         'right': { type: Number, default: 0 },
         'wrong': { type: Number, default: 0 }
