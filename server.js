@@ -2,12 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
+const { Storage } = require('@google-cloud/storage');
 const multer = require('multer');
-const { Storage } = require('@google-cloud/storage')
 
 const app = express();
-
-
 
 const userRouter = require('./routes/users');
 const accountsRouter = require('./routes/accounts');
@@ -24,12 +22,6 @@ db.on('connected', function () {
 });
 
 
-
-
-
-
-
-
 app.use(require('./config/checkToken'));
 
 
@@ -37,7 +29,6 @@ app.use(require('./config/checkToken'));
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:${CLIENTDEVPORT}` }))
 
 const PORT = process.env.PORT || SERVERDEVPORT
-
 
 
 app.use(express.json())
@@ -58,7 +49,7 @@ const upload = multer({
     storage: multer.memoryStorage(),
 });
 
-app.post('/upload-profile-picture', upload.single('profilePicture'), async (req, res) => {
+app.post('/upload', upload.single('profilePicture'), async (req, res) => {
     try {
         const file = req.file;
 

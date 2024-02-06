@@ -7,7 +7,6 @@ module.exports = {
     updatePicture
 };
 
-
 async function createAccount(req, res) {
     try {
         const userID = req.body.userID;
@@ -42,6 +41,7 @@ async function editMotto(req, res) {
     }
 };
 
+
 async function updatePicture(req, res) {
     try {
         const userID = req.user._id;
@@ -54,6 +54,5 @@ async function updatePicture(req, res) {
         console.error('Error changing pic', error)
     }
 };
-
 
 
