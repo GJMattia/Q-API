@@ -4,7 +4,8 @@ module.exports = {
     createAccount,
     getAccount,
     editMotto,
-    updatePicture
+    updatePicture,
+    addXp
 };
 
 async function createAccount(req, res) {
@@ -54,5 +55,21 @@ async function updatePicture(req, res) {
         console.error('Error changing pic', error)
     }
 };
+
+async function addXp(req, res) {
+    try {
+        const userID = req.user._id;
+        const account = await Account.findOne({ user: userID });
+        account.xp = account.xp + req.body.xp;
+        if (account.xp >= 100) {
+            account.level = account.level + 1;
+            account.xp = account.xp - 100;
+        }
+        await account.save();
+        res.json(account);
+    } catch (error) {
+        console.error('Error adding Xp', error)
+    }
+}
 
 

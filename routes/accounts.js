@@ -11,5 +11,7 @@ router.put('/motto', accountsCtrl.editMotto);
 
 router.put('/pic', accountsCtrl.updatePicture);
 
+router.put('/xp', accountsCtrl.addXp);
+
 
 module.exports = router;
