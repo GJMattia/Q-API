@@ -13,5 +13,6 @@ router.put('/pic', accountsCtrl.updatePicture);
 
 router.put('/xp', accountsCtrl.addXp);
 
+router.put('/stats', accountsCtrl.submitAnswer);
 
 module.exports = router;

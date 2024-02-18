@@ -5,7 +5,8 @@ module.exports = {
     getAccount,
     editMotto,
     updatePicture,
-    addXp
+    addXp,
+    submitAnswer
 };
 
 async function createAccount(req, res) {
@@ -72,4 +73,21 @@ async function addXp(req, res) {
     }
 }
 
+async function submitAnswer(req, res) {
+    try {
+        const userID = req.user._id;
+        const account = await Account.findOne({ user: userID });
+        let category = req.body.category;
 
+        if (req.body.status === 1) {
+            account.categories[category].right++
+        } else if (req.body.status === 0) {
+            account.categories[category].wrong++
+        }
+
+        await account.save();
+        res.json('yeah baby');
+    } catch (error) {
+        console.error('Error adding Xp', error)
+    }
+}
