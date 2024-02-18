@@ -22,7 +22,7 @@ const accountSchema = new Schema({
             'right': { type: Number, default: 0 },
             'wrong': { type: Number, default: 0 }
         },
-        videoGames: {
+        videogames: {
             'right': { type: Number, default: 0 },
             'wrong': { type: Number, default: 0 }
         },
