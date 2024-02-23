@@ -8,6 +8,11 @@ const accountSchema = new Schema({
     level: { type: Number, default: 0 },
     motto: { type: String, default: 'motto here' },
     pic: { type: String, default: 'https://storage.cloud.google.com/saucebucket1916/default.jpeg' },
+    powerups: {
+        skip: { type: Number, default: 5 },
+        quad: { type: Number, default: 5 },
+        minus: { type: Number, default: 5 }
+    },
 
     categories: {
         film: {

@@ -15,4 +15,6 @@ router.put('/xp', accountsCtrl.addXp);
 
 router.put('/stats', accountsCtrl.submitAnswer);
 
+router.put('/powerups', accountsCtrl.usePowerup);
+
 module.exports = router;

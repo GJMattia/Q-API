@@ -6,7 +6,8 @@ module.exports = {
     editMotto,
     updatePicture,
     addXp,
-    submitAnswer
+    submitAnswer,
+    usePowerup
 };
 
 async function createAccount(req, res) {
@@ -91,3 +92,17 @@ async function submitAnswer(req, res) {
         console.error('Error adding Xp', error)
     }
 }
+
+async function usePowerup(req, res) {
+    try {
+        const userID = req.user._id;
+        const account = await Account.findOne({ user: userID });
+        let powerup = req.body.powerup;
+
+        account.powerups[powerup] = account.powerups[powerup] - 1;
+        await account.save();
+        res.json(account);
+    } catch (error) {
+        console.error('Error changing motto', error)
+    }
+};
