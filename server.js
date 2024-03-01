@@ -42,7 +42,9 @@ app.use('/accounts', ensureLoggedIn, accountsRouter);
 
 
 //START PICTURE UPLOAD
-const storage = new Storage();
+const storage = new Storage({
+    credentials: (require('./sauce.json'))
+});
 const bucket = storage.bucket('saucebucket1916');
 
 const upload = multer({
