@@ -7,13 +7,16 @@ const accountSchema = new Schema({
     xp: { type: Number, default: 0 },
     level: { type: Number, default: 0 },
     motto: { type: String, default: 'motto here' },
-    pic: { type: String, default: 'https://storage.cloud.google.com/saucebucket1916/default.jpeg' },
+    pic: { type: String, default: 'https://storage.googleapis.com/saucebucket1916/GW.png' },
     powerups: {
         skip: { type: Number, default: 5 },
         quad: { type: Number, default: 5 },
         minus: { type: Number, default: 5 }
     },
-
+    overall: {
+        'right': { type: Number, default: 0 },
+        'wrong': { type: Number, default: 0 }
+    },
     categories: {
         film: {
             'right': { type: Number, default: 0 },

@@ -81,9 +81,11 @@ async function submitAnswer(req, res) {
         let category = req.body.category;
 
         if (req.body.status === 1) {
-            account.categories[category].right++
+            account.categories[category].right++;
+            account.overall.right++;
         } else if (req.body.status === 0) {
-            account.categories[category].wrong++
+            account.categories[category].wrong++;
+            account.overall.wrong++;
         }
 
         await account.save();
