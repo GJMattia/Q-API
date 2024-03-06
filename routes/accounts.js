@@ -5,6 +5,8 @@ const accountsCtrl = require('../controllers/accounts');
 
 router.get('/', accountsCtrl.getAccount);
 
+router.get('/all', accountsCtrl.getAllAccounts);
+
 router.post('/', accountsCtrl.createAccount);
 
 router.put('/motto', accountsCtrl.editMotto);

@@ -7,8 +7,18 @@ module.exports = {
     updatePicture,
     addXp,
     submitAnswer,
-    usePowerup
+    usePowerup,
+    getAllAccounts
 };
+
+async function getAllAccounts(req, res) {
+    try {
+        const accounts = await Account.find({}).populate('user', 'name');
+        res.json(accounts);
+    } catch (error) {
+        console.error('error getting all accounts', error)
+    }
+}
 
 async function createAccount(req, res) {
     try {
