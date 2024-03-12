@@ -9,9 +9,9 @@ const accountSchema = new Schema({
     motto: { type: String, default: 'motto here' },
     pic: { type: String, default: 'https://storage.googleapis.com/saucebucket1916/GW.png' },
     powerups: {
-        skip: { type: Number, default: 5 },
-        quad: { type: Number, default: 5 },
-        minus: { type: Number, default: 5 }
+        skip: { type: Number, default: 100 },
+        quad: { type: Number, default: 100 },
+        minus: { type: Number, default: 100 }
     },
     overall: {
         'right': { type: Number, default: 0 },
